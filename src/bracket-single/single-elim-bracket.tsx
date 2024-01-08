@@ -63,7 +63,7 @@ const SingleEliminationBracket = ({
   };
   const generate2DBracketArray = (final: Match) => {
     return final
-      ? [...generateColumn([final]), [final]].filter(arr => arr.length > 0)
+      ? [...generateColumn([final]), [final]].filter(arr => arr?.length > 0)
       : [];
   };
   const columns = generate2DBracketArray(lastGame);
@@ -75,8 +75,8 @@ const SingleEliminationBracket = ({
   // ]
 
   const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
-    columns[0].length,
-    columns.length,
+    columns[0]?.length ?? 0,
+    columns?.length ?? 0,
     rowHeight,
     columnWidth,
     canvasPadding,
@@ -125,7 +125,7 @@ const SingleEliminationBracket = ({
                           roundHeader={roundHeader}
                           canvasPadding={canvasPadding}
                           width={width}
-                          numOfRounds={columns.length}
+                          numOfRounds={columns?.length ?? 0}
                           tournamentRoundText={match.tournamentRoundText}
                           columnIndex={columnIndex}
                         />
